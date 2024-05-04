@@ -26,7 +26,8 @@ public:
   void defaultBoardCells();
   char playerInput(int playerID);
   void displayBoard();
-  bool didPlayerWin();
+  bool didPlayerWin(std::string name);
   bool checkPossibleWins(char symbol) const;
+  bool checkPossibleTie();
 };
 #endif BOARD_H
