@@ -1,3 +1,16 @@
+/******************************************************************************
+* @file Board.cpp
+* @brief Implements the constructor and member functions related to the Board
+* class
+*
+* Purpose: This file implements the behaviour related to the board for the 
+* game. It handles player input, clearing the board, dispalying the board
+* and checking win conditions.
+*
+* @author mimikyumom.
+* @bug No known bugs
+******************************************************************************/
+
 #include "Board.h"
 
 Board::Board()
