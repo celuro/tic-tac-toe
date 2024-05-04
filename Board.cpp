@@ -1,6 +1,5 @@
 #include "Board.h"
 
-
 Board::Board()
 {
   defaultBoardCells();
@@ -27,11 +26,12 @@ char Board::playerInput(int playerID)
   std::cin >> row;
   std::cout << "Please enter the column: ";
   std::cin >> column;
-  // You can not put an X or O that's not on the board
+  // You can not put an X or an O that's not on the board
   if ((row < 0 || row > 2) || (column < 0 || row > 2)) {
     std::cerr << "ERROR: Given position on board is invalid, must be inside the 3x3 matrix.\n";
     return '.';
   }
+  // You can't put an X or an O that's already on the board
   else if ((board[row][column] == 'X') || (board[row][column] == 'O')) {
     std::cerr << "ERROR: Position on the board is taken.\n";
     return '.';
@@ -65,7 +65,7 @@ void Board::displayBoard()
   std::cout << "-------\n";
 }
 
-bool Board::didPlayerWin()
+bool Board::didPlayerWin(std::string name)
 {
   // Player wins if their symbol covers 3 spaces vertically, horizontally or diagonally
   PlayerSymbol playerOne = PlayerSymbol::X;
@@ -75,17 +75,22 @@ bool Board::didPlayerWin()
 
   bool playerOneWin = checkPossibleWins(X);
   bool playerTwoWin = checkPossibleWins(O);
+
   if (playerOneWin == true) {
-    std::cout << "Player One Won!\n";
+    std::cout << name << " Won!\n";
     return playerOneWin;
   }
   else if (playerTwoWin == true) {
-    std::cout << "Player Two Won!\n";
+    std::cout << name << " Won!\n";
     return playerTwoWin;
   }
   else {
-    return false;
-  }
+    bool tie = checkPossibleTie();
+    if (tie == true) {
+      std::cout << "Tie!\n";
+    }
+      return false;
+    }
 }
 
 bool Board::checkPossibleWins(char symbol) const
@@ -116,6 +121,30 @@ bool Board::checkPossibleWins(char symbol) const
   else if (((board[0][0] == symbol) && (board[1][1] == symbol) && (board[2][2] == symbol)) ||
            ((board[0][2] == symbol) && (board[1][1] == symbol) && (board[2][0] == symbol)))
   {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool Board::checkPossibleTie()
+{
+  bool didPlayerOneWin = checkPossibleWins('X');
+  bool didPlayerTwoWin = checkPossibleWins('Y');
+
+  // If each position on the board is filled that means it's a tie
+  int sum = 0;
+
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      if (board[i][j] == 'X' || board[i][j] == 'O') {
+        sum += 1;
+      }
+    }
+  }
+
+  if (!didPlayerOneWin && !didPlayerTwoWin && sum == 9) {
     return true;
   }
   else {
