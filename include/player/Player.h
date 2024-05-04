@@ -14,6 +14,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#define DEFAULT_PLAYER_ID 0
+#define PLAYER_ONE 1
+#define PLAYER_TWO 2
+#define MIN_NAME_LENGTH 0
+
 #include <string>
 
 class Player {
@@ -26,7 +31,7 @@ public:
   void setName(std::string name);
   std::string getName();
   void setPlayerID(int playerID);
-  int getPlayerID();
+  int getPlayerID() const;
 };
 
 #endif

@@ -9,7 +9,7 @@
 * @bug No known bugs
 ******************************************************************************/
 
-#include "../../include/display/display.h"
+#include "../include/display/display.h"
 
 void displayTitle() {
   std::cout << R"( .-') _                           .-') _      ('-.                      .-') _                   ('-.   

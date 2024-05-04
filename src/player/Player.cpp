@@ -10,7 +10,7 @@
 * @bug No known bugs
 ******************************************************************************/
 
-#include "../../include/player/Player.h"
+#include "../include/player/Player.h"
 
 Player::Player()
 {

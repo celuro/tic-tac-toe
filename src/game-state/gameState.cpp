@@ -8,7 +8,7 @@
 * @bug No known bugs
 ******************************************************************************/
 
-#include "../../include/game-state/gameState.h"
+#include "../include/game-state/gameState.h"
 
 std::string playerNameInput(std::string player)
 {

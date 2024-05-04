@@ -4,13 +4,13 @@
 * class
 *
 * Purpose: This file implements the behaviour related to the board for the 
-* game. It handles player input, clearing the board, dispalying the board
+* game. It handles player input, clearing the board, displaying the board
 * and checking win conditions.
 *
 * @author mimikyumom.
 * @bug No known bugs
 ******************************************************************************/
-#include "../../include/board/Board.h"
+#include "../include/board/Board.h"
 
 Board::Board()
 {
